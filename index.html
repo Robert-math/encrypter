@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Encrypter</title>
+</head>
+<body>
+	<div class="container">
+		<input type="text" name="" placeholder="key" id="keyArea">
+		<input type="text" name="" placeholder="text" id="textArea">
+		<input type="text" name="" placeholder="output" id="outputArea">
+		<input type="button" value="Go" onclick="start()">
+	</div>
+	<script type="text/javascript">
+		const alphabet = "abcdefghijklmnopqrstuvwxyz";
+		const keyArea = document.getElementById('keyArea');
+		const textArea = document.getElementById('textArea');
+		const outputArea = document.getElementById('outputArea');
+		function fullKey(startKey){
+			let l = startKey.length;
+			
+			let key =[];
+			for(let i=0;i<=l-1;i++){
+				key[i] = startKey[i];	
+			}
+			for(let i = 0;i<=25;i++){
+				if(!startKey.includes(alphabet[i])){
+					key.push(alphabet[i]);
+				}
+			}
+			return(key);
+		}
+		function encrypt(text,key){
+			let l = text.length;
+			let encryptedText = "";
+			for(let i =0;i<=l-1;i++ ){
+				
+				if(text[i] == " "){
+					encryptedText += " ";
+				}else{
+					encryptedText += key[alphabet.indexOf(text[i])];
+				}
+			}
+			return(encryptedText);
+		}
+		console.log(encrypt("abgar",""))
+		function start(){
+			
+			outputArea.value = encrypt(textArea.value,fullKey(keyArea.value));
+		}
+	</script>
+	<style>
+		input{
+			font-size: 24px;
+			margin: 10px;
+		}
+		.container{
+			max-width: 1300px;
+			margin: 20px auto;
+		}
+	</style>
+</body>
+</html>
