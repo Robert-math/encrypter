@@ -10,12 +10,14 @@
 		<input type="text" name="" placeholder="text" id="textArea">
 		<input type="text" name="" placeholder="output" id="outputArea">
 		<input type="button" value="Go" onclick="start()">
+<input type="text"  id="fullkey">
 	</div>
 	<script type="text/javascript">
 		const alphabet = "abcdefghijklmnopqrstuvwxyz";
 		const keyArea = document.getElementById('keyArea');
 		const textArea = document.getElementById('textArea');
 		const outputArea = document.getElementById('outputArea');
+		const fullkeyarea = document.getElementById('fullkey');
 		function fullKey(startKey){
 			let l = startKey.length;
 			
@@ -28,6 +30,14 @@
 					key.push(alphabet[i]);
 				}
 			}
+			for(let i = key.length-1;i>=0;i--){
+				if(key.indexOf(key[i])!=i){
+				for(let j = i;j<=key.length-2;j++){
+					key[j]=key[j+1];
+}
+			}
+			}
+			fullkeyarea.value = key;
 			return(key);
 		}
 		function encrypt(text,key){
